@@ -14,7 +14,7 @@ app.use(logger("dev"));
 
 // set up mongoose
 mongoose
-  .connect("mongodb://localhost:27017/dataphp")
+  .connect(process.env.MONGODB_URL || "mongodb://localhost:27017/dataphp")
   .then(() => {
     console.log("Database connected");
   })
@@ -25,12 +25,12 @@ mongoose
 // set up route
 app.get("/", (req, res) => {
   res.status(200).json({
-    message: "Welcome to Project Support"
+    message: "Welcome to NẮNG VIỆT !!!!"
   });
 });
 // set up route
 app.use("/api/", apiRoutes);
 
-app.listen(process.env.API_POST, () => {
-  console.log(`Our server is running on port.`);
+app.listen(process.env.API_PORT || 4000, () => {
+  console.log(`Tao bắt đầu chạy !!!`);
 });
