@@ -69,3 +69,10 @@ exports.getLink = (req, res) => {
   });
   c.queue("https://viblo.asia/newest");
 };
+
+exports.showPostDetail = function(req, res) {
+  Post.findById(req.params.id, function(err, result) {
+    if (err) return next(err);
+    res.send(result);
+  });
+};

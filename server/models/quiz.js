@@ -2,26 +2,30 @@ const mongoose = require("mongoose");
 
 mongoose.Promise = global.Promise;
 
-const postSchema = new mongoose.Schema({
+const quizSchema = new mongoose.Schema({
   _id: mongoose.Schema.Types.ObjectId,
-  title: {
+  question: {
     type: String,
     required: true
   },
-  description: {
+  correct_answer: {
     type: String,
     required: true
   },
-  author: {
+  answers: {
+    type: Array,
+    required: true
+  },
+  explain: {
     type: String,
     required: true
   },
-  thumbnail: {
+  time: {
     type: String,
     required: true
   }
 });
 
-var Post = mongoose.model("posts", postSchema);
+var Quiz = mongoose.model("quizs", quizSchema);
 
-module.exports = Post;
+module.exports = Quiz;
